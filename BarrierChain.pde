@@ -1,5 +1,4 @@
 import java.util.*;
-import com.hamoid.*;
 
 // Parameters (start)
 
@@ -56,7 +55,6 @@ Person[] people;
 double[] totals;
 PImage imageGrid;
 PImage mapImage;
-VideoExport videoExport;
 
 int COUNT;
 double PANEL_W = W_W/PANEL_COUNT_W;
@@ -107,9 +105,6 @@ void setup(){
     }
   }
   size(1920,1080);
-  videoExport = new VideoExport(this,FILENAME);
-  videoExport.setFrameRate(60);
-  videoExport.startMovie();
 }
 
 void draw(){
@@ -120,15 +115,14 @@ void draw(){
   drawPath(barriers);
   drawPanels();
   drawFooter();
-  saveVideoFrameHamoid();
+  saveVideoFrame();
   
   currentYear += PLAY_SPEED;
 }
 
-void saveVideoFrameHamoid(){
-  videoExport.saveFrame();
-  if(currentYear >= LEN){ 
-    videoExport.endMovie();
+void saveVideoFrame(){
+  saveFrame("frames/######.tif");
+  if(currentYear >= LEN){
     exit();
   }
 }
