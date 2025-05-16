@@ -46,7 +46,7 @@ class Person{
     }
   }
   
-  double calculateValue(double y){
+  double calculateValue(double currentYear){
     valueCache = arrLookup(values,currentYear);
     return valueCache;
   }
